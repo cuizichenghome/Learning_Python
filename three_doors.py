@@ -25,11 +25,12 @@ def make_a_choice(switch=False):
             a.append(i)
     # print('除选手选择外，还剩下：%s' % a)
 
-    # 判断情况 一只羊，一辆车
+    # 判断情况 
+	# 一只羊，一辆车
     if boxes[a[0]] == 'car' or boxes[a[1]] =='car':
         show = a[0] if boxes[a[0]] == 'goat' else a[1]
         left = a[0] if boxes[a[0]] == 'car' else a[1]
-    # 剩下两只羊
+    # 两只羊
     else:
         show = random.choice(a)
         for i in a:
