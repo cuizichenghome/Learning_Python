@@ -19,17 +19,18 @@ def make_a_choice(switch=False):
     # print('选手的最初选择是： %d' % start_choice)
 
     # 主持人打开一个箱子
-    a= []
+    a = []
     for i in [0, 1, 2]:
         if i != start_choice:
             a.append(i)
     # print('除选手选择外，还剩下：%s' % a)
+    # 判断情况
+    #  一只羊，一辆车
 
-    # 判断情况 
-	# 一只羊，一辆车
     if boxes[a[0]] == 'car' or boxes[a[1]] =='car':
         show = a[0] if boxes[a[0]] == 'goat' else a[1]
         left = a[0] if boxes[a[0]] == 'car' else a[1]
+
     # 两只羊
     else:
         show = random.choice(a)
