@@ -1,7 +1,7 @@
-# coding: utf-8
+
+# -*- coding: UTF-8 -*-
 
 import random
-import logging
 
 lose_count = 0
 win_count = 0
@@ -9,34 +9,37 @@ win_count = 0
 
 def make_a_choice(switch=False):
     # 初始化箱子
-    boxes = ['goat', 'goat', 'goat']
-    index_car = random.randint(0,2)
-    boxes[index_car] = 'car'
+    boxes = ['goat'] * 3
+    index_car = random.randint(0, 2)
+    for i in range(3):
+        if i == index_car:
+            boxes[i] = 'car'
+            break
+
     # print('箱子里面是: %s' % boxes)
 
     # 选手选择
-    start_choice = random.randint(0,2)
+    start_choice = random.randint(0, 2)
     # print('选手的最初选择是： %d' % start_choice)
 
     # 主持人打开一个箱子
     a = []
-    for i in [0, 1, 2]:
-        if i != start_choice:
-            a.append(i)
+    for index, item in enumerate(boxes):
+        if index != start_choice:
+            a.append(index)
     # print('除选手选择外，还剩下：%s' % a)
     # 判断情况
     #  一只羊，一辆车
 
-    if boxes[a[0]] == 'car' or boxes[a[1]] =='car':
-        show = a[0] if boxes[a[0]] == 'goat' else a[1]
-        left = a[0] if boxes[a[0]] == 'car' else a[1]
+    if boxes[a[0]] == 'car' or boxes[a[1]] == 'car':
+        show, left = (a[0], a[1]) if boxes[a[0]] == 'goat' else (a[1], a[0])
 
     # 两只羊
     else:
         show = random.choice(a)
-        for i in a:
-            if i != show:
-                left = i
+        for index, item in enumerate(a):
+            if item != show:
+                left = item
                 break
             else:
                 continue
@@ -65,7 +68,7 @@ def stay100():
         make_a_choice()
     print('*' * 50)
     print('选手坚持自己的选择:\n共执行1000次')
-    print('胜利%s次，失败%s次' % (win_count,lose_count))
+    print('胜利%s次，失败%s次' % (win_count, lose_count))
     print('胜率为：%s' % str((win_count/1000)*100)+'%')
     print('*' * 50)
 
@@ -79,11 +82,11 @@ def switch100():
     print('胜率为：%s' % str((win_count/1000)*100)+'%')
     print('*' * 50)
     
-if __name__ == '__main__':
-    stay100()
-    global win_count
-    win_count = 0
-    global lose_count
-    lose_count = 0
-    switch100()
+# 对闭包等概念还不太熟悉，不太会使用global变量
+stay100()
+# global win_count
+win_count = 0
+# global lose_count
+lose_count = 0
+switch100()
 
