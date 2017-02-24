@@ -1,4 +1,3 @@
-
 # -*- coding: UTF-8 -*-
 
 import random
@@ -11,10 +10,7 @@ def make_a_choice(switch=False):
     # 初始化箱子
     boxes = ['goat'] * 3
     index_car = random.randint(0, 2)
-    for i in range(3):
-        if i == index_car:
-            boxes[i] = 'car'
-            break
+    boxes[index_car] = 'car'
 
     # print('箱子里面是: %s' % boxes)
 
@@ -23,11 +19,13 @@ def make_a_choice(switch=False):
     # print('选手的最初选择是： %d' % start_choice)
 
     # 主持人打开一个箱子
+    # a里面存放的是剩下的箱子的索引号
     a = []
     for index, item in enumerate(boxes):
         if index != start_choice:
             a.append(index)
     # print('除选手选择外，还剩下：%s' % a)
+
     # 判断情况
     #  一只羊，一辆车
 
@@ -41,8 +39,6 @@ def make_a_choice(switch=False):
             if item != show:
                 left = item
                 break
-            else:
-                continue
 
     # print('主持人打开了%s号箱子，里面是一只羊' % show)
     # print('场上还剩下%s和%s号箱子' % (left,start_choice))
@@ -53,7 +49,7 @@ def make_a_choice(switch=False):
         # 选手坚持最初选择
         finally_choice = start_choice
 
-    if boxes[finally_choice] == 'car':
+    if finally_choice == index_car:
         # print('选手胜利！车子就在%s号箱内。' % start_choice)
         global win_count
         win_count = win_count + 1
@@ -69,7 +65,7 @@ def stay100():
     print('*' * 50)
     print('选手坚持自己的选择:\n共执行1000次')
     print('胜利%s次，失败%s次' % (win_count, lose_count))
-    print('胜率为：%s' % str((win_count/1000)*100)+'%')
+    print('胜率为：{0:.2f}%'.format(win_count/1000*100))
     print('*' * 50)
 
 
@@ -78,11 +74,11 @@ def switch100():
         make_a_choice(switch=True)
     print('*' * 50)
     print('选手改变自己的选择:\n共执行1000次')
-    print('胜利%s次，失败%s次' % (win_count,lose_count))
-    print('胜率为：%s' % str((win_count/1000)*100)+'%')
+    print('胜利%s次，失败%s次' % (win_count, lose_count))
+    print('胜率为：{0:.2f}%'.format(win_count / 1000 * 100))
     print('*' * 50)
     
-# 对闭包等概念还不太熟悉，不太会使用global变量
+# 不太会使用global变量
 stay100()
 # global win_count
 win_count = 0
