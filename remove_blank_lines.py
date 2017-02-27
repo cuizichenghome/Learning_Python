@@ -1,4 +1,9 @@
 # -*- coding: UTF-8 -*-
+"""
+删除文件中多余空行，
+不过对于.py文件来说，
+有点不合时宜。
+"""
 # 需要指定文件的打开编码，否则会使用系统默认的GBK编码，产生错误
 with open('more', 'r', encoding='utf-8') as f:
     with open('after', 'w') as output:
