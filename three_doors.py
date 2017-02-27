@@ -1,6 +1,9 @@
 # -*- coding: UTF-8 -*-
 
 import random
+"""
+解决电视节目中的三门问题，观察改变选择后，获胜概率有多大。
+"""
 
 lose_count = 0
 win_count = 0
