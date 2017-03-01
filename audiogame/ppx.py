@@ -4,7 +4,7 @@ import cocos
 class PPX(cocos.sprite.Sprite):
 
     def __init__(self):
-        super(PPX, self).__init__('ppx.png')
+        super(PPX, self).__init__('static/img/ppx.png')
         self.can_jump = False
         self.speed = 0
         self.image_anchor = 0, 0

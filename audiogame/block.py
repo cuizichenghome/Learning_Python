@@ -4,7 +4,7 @@ import cocos
 
 class Block(cocos.sprite.Sprite):
     def __init__(self, pos):
-        super(Block, self).__init__('black.png')
+        super(Block, self).__init__('static/img/black.png')
         self.image_anchor = 0, 0
         x, y = pos
         if x == 0:

@@ -4,7 +4,6 @@ from cocos.sprite import Sprite
 from pyaudio import PyAudio, paInt16
 from ppx import PPX
 from block import Block
-# TODO: 把图片某一目录下进行引用，对文件操作不熟练
 
 
 class VoiceGame(cocos.layer.ColorLayer):
@@ -14,7 +13,8 @@ class VoiceGame(cocos.layer.ColorLayer):
         super(VoiceGame, self).__init__(255, 255, 255, 255, 800, 600)
 
         # 右上角的标志
-        self.logo = Sprite('ppx.png')
+        # python中文件用'/'分割，以'.'或者'c:/'开头的为绝对路径
+        self.logo = Sprite('static/img/ppx.png')
         self.logo.position = 550, 400
         self.add(self.logo, 9999)
 
@@ -25,7 +25,7 @@ class VoiceGame(cocos.layer.ColorLayer):
         self.LEVEL = 1500
 
         # 左上角的声音条
-        self.voicebar = Sprite('black.png', color=(0, 0, 255))
+        self.voicebar = Sprite('img/black.png', color=(0, 0, 255))
         self.voicebar.position = 20, 450
         self.voicebar.scale_y = 0.1
         self.voicebar.img_anchor = 0, 0
